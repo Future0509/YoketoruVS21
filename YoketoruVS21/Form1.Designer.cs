@@ -32,7 +32,7 @@ namespace YoketoruVS21
             this.components = new System.ComponentModel.Container();
             this.titleLabel = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.staratButton = new System.Windows.Forms.Button();
+            this.startButton = new System.Windows.Forms.Button();
             this.timeLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.copyrightLabel = new System.Windows.Forms.Label();
@@ -62,18 +62,18 @@ namespace YoketoruVS21
             this.label2.Size = new System.Drawing.Size(0, 12);
             this.label2.TabIndex = 1;
             // 
-            // staratButton
+            // startButton
             // 
-            this.staratButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.staratButton.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.staratButton.Location = new System.Drawing.Point(260, 279);
-            this.staratButton.Name = "staratButton";
-            this.staratButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.staratButton.Size = new System.Drawing.Size(236, 96);
-            this.staratButton.TabIndex = 2;
-            this.staratButton.Text = "スタート!!";
-            this.staratButton.UseVisualStyleBackColor = false;
-            this.staratButton.Click += new System.EventHandler(this.staratButton_Click);
+            this.startButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.startButton.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.startButton.Location = new System.Drawing.Point(260, 279);
+            this.startButton.Name = "startButton";
+            this.startButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.startButton.Size = new System.Drawing.Size(236, 96);
+            this.startButton.TabIndex = 2;
+            this.startButton.Text = "スタート!!";
+            this.startButton.UseVisualStyleBackColor = false;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // timeLabel
             // 
@@ -145,7 +145,7 @@ namespace YoketoruVS21
             // 
             this.titleButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.titleButton.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.titleButton.Location = new System.Drawing.Point(552, 279);
+            this.titleButton.Location = new System.Drawing.Point(486, 279);
             this.titleButton.Name = "titleButton";
             this.titleButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.titleButton.Size = new System.Drawing.Size(236, 96);
@@ -165,7 +165,7 @@ namespace YoketoruVS21
             this.Controls.Add(this.label4);
             this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.titleButton);
-            this.Controls.Add(this.staratButton);
+            this.Controls.Add(this.startButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.titleLabel);
             this.Name = "Form1";
@@ -180,7 +180,7 @@ namespace YoketoruVS21
 
         private System.Windows.Forms.Label titleLabel;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button staratButton;
+        private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label copyrightLabel;
