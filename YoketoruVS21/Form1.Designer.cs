@@ -66,7 +66,7 @@ namespace YoketoruVS21
             // 
             this.startButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.startButton.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.startButton.Location = new System.Drawing.Point(260, 279);
+            this.startButton.Location = new System.Drawing.Point(276, 279);
             this.startButton.Name = "startButton";
             this.startButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.startButton.Size = new System.Drawing.Size(236, 96);
@@ -120,7 +120,7 @@ namespace YoketoruVS21
             this.gameOverLabel.AutoSize = true;
             this.gameOverLabel.Font = new System.Drawing.Font("MS UI Gothic", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.gameOverLabel.ForeColor = System.Drawing.Color.Crimson;
-            this.gameOverLabel.Location = new System.Drawing.Point(87, 201);
+            this.gameOverLabel.Location = new System.Drawing.Point(268, 218);
             this.gameOverLabel.Name = "gameOverLabel";
             this.gameOverLabel.Size = new System.Drawing.Size(242, 47);
             this.gameOverLabel.TabIndex = 7;
@@ -131,7 +131,7 @@ namespace YoketoruVS21
             this.clearLabel.AutoSize = true;
             this.clearLabel.Font = new System.Drawing.Font("MS UI Gothic", 35F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.clearLabel.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.clearLabel.Location = new System.Drawing.Point(602, 196);
+            this.clearLabel.Location = new System.Drawing.Point(298, 218);
             this.clearLabel.Name = "clearLabel";
             this.clearLabel.Size = new System.Drawing.Size(186, 47);
             this.clearLabel.TabIndex = 8;
@@ -145,13 +145,14 @@ namespace YoketoruVS21
             // 
             this.titleButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.titleButton.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.titleButton.Location = new System.Drawing.Point(486, 279);
+            this.titleButton.Location = new System.Drawing.Point(274, 279);
             this.titleButton.Name = "titleButton";
             this.titleButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.titleButton.Size = new System.Drawing.Size(236, 96);
             this.titleButton.TabIndex = 2;
             this.titleButton.Text = "タイトルへ";
             this.titleButton.UseVisualStyleBackColor = false;
+            this.titleButton.Click += new System.EventHandler(this.titleButton_Click);
             // 
             // Form1
             // 
@@ -170,7 +171,7 @@ namespace YoketoruVS21
             this.Controls.Add(this.titleLabel);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+
             this.ResumeLayout(false);
             this.PerformLayout();
 

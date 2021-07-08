@@ -13,9 +13,10 @@ namespace YoketoruVS21
 {
     public partial class Form1 : Form
     {
-        [DllImport("user32.dll")]
-        public static extern short GetAsyncKeyState(int vKey);
         const bool isDebug = true;
+
+        const int speedMax = 20;
+        const int StateTimne = 200;
 
         const int PlayerMax = 1;
         const int EnemyMax = 10;
@@ -23,6 +24,9 @@ namespace YoketoruVS21
         const int ChrMax = PlayerMax + EnemyMax + ItemMax;
 
         Label[] chrs = new Label[ChrMax];
+        int[] vx = new int[ChrMax];
+        int[] vy = new int[ChrMax];
+
         const int PlayerIndex = 0;
         const int EnemyIndex = PlayerIndex + PlayerMax;
         const int ItemIndex = EnemyIndex + EnemyMax;
@@ -30,20 +34,29 @@ namespace YoketoruVS21
         const string PlayerText = "(・ω・)";
         const string EnemyText = "◆";
         const string ItemText = "★";
+      
         static Random rand = new Random();
         enum State
         {
-            None = -1,      //無効
-            Title,       //タイトル
+            None = -1,  //無効
+            Title,      //タイトル
             Game,       //ゲーム
-            Gameover,  //ゲームオーバー
-            Clear,    //クリア
+            Gameover,   //ゲームオーバー
+            Clear       //クリア
         }
+
         State currentState = State.None;
         State nextState = State.Title;
+
+        int itemCoUnt;
+
+        [DllImport("user32.dll")]
+        public static extern short GetAsyncKeyState(int vKey);
+     
         public Form1()
         {
             InitializeComponent();
+
             for (int i = 0; i < ChrMax; i++)
             {
                 chrs[i] = new Label();
@@ -64,18 +77,58 @@ namespace YoketoruVS21
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
-        }
         private void timer1_Tick(object sender, EventArgs e)
         {
-
-            if (nextState != State.None)
+            if (isDebug)
             {
-                initProc();
+                if (GetAsyncKeyState((int)Keys.O) < 0)
+                {
+                    nextState = State.Gameover;
+                }
+                else if (GetAsyncKeyState((int)Keys.C) < 0)
+                {
+                    nextState = State.Clear;
+                }
             }
-
+            if (nextState != State.None)
+               {
+                initProc();
+               }
+                if (currentState == State.Game)
+                {
+                    UpdateGame();
+                }
+            }
+        
+            void UpdateGame()
+            {
+                Point mp = PointToClient(MousePosition);
+                // TODO: mpがプレイヤーの中心になるように設定
+                chrs[PlayerIndex].Left = mp.X - chrs[PlayerIndex].Width / 2;
+                chrs[PlayerIndex].Top = mp.Y - chrs[PlayerIndex].Height / 2;
+                for (int i = EnemyIndex; i < ChrMax; i++)
+                {
+                    chrs[i].Left = vx[i];
+                    chrs[i].Top = vy[i];
+                    if (chrs[i].Left < 0)
+                    {
+                        vx[i] = Math.Abs(vx[i]);
+                    }
+                    if (chrs[i].Top < 0)
+                    {
+                        vy[i] = Math.Abs(vy[i]);
+                    }
+                    if (chrs[i].Right > ClientSize.Width)
+                    {
+                        vx[i] = Math.Abs(vx[i]);
+                    }
+                    if (chrs[i].Bottom > ClientSize.Height)
+                    {
+                        vy[i] = Math.Abs(vx[i]);
+                    }
+                }
+            }
             void initProc()
             {
                 currentState = nextState;
@@ -91,46 +144,41 @@ namespace YoketoruVS21
                         titleButton.Visible = false;
                         clearLabel.Visible = false;
                         break;
+
                     case State.Game:
                         titleLabel.Visible = false;
                         startButton.Visible = false;
                         copyrightLabel.Visible = false;
                         hiLabel.Visible = false;
+
+                        for (int i = EnemyIndex; i < ChrMax; i++)
+                        {
+                            chrs[i].Left = rand.Next(ClientSize.Width - chrs[i].Width);
+                            chrs[i].Top = rand.Next(ClientSize.Height - chrs[i].Height);
+                            vx[i] = rand.Next(-speedMax, speedMax + 1);
+                            vy[i] = rand.Next(-speedMax, speedMax + 1);
+                        }
+                        break;
+                    case State.Gameover:
+                        gameOverLabel.Visible = true;
+                        titleButton.Visible = true;
+                        break;
+                    case State.Clear:
+                        clearLabel.Visible = true;
+                        titleButton.Visible = true;
+                        hiLabel.Visible = true;
                         break;
 
-
                 }
             }
-            if (isDebug)
-            {
-                if (GetAsyncKeyState((int)Keys.O) < 0)
-                {
-                    nextState = State.Gameover;
-                }
-                else if (GetAsyncKeyState((int)Keys.C) < 0)
-                {
-                    nextState = State.Clear;
-                }
-                if (currentState == State.Game)
-                {
-                    UpdateGame();
-                }
-                if (GetAsyncKeyState((int)Keys.Space) < 0)
-                {
-                    Text = "space";
-                }
-            }
-            void UpdateGame()
-            {
-                Point mp = PointToClient(MousePosition);
-                // TODO: mpがプレイヤーの中心になるように設定
-            }
-           
-        }
-
         private void startButton_Click(object sender, EventArgs e)
         {
             nextState = State.Game;
         }
+        private void titleButton_Click(object sender, EventArgs e)
+        {
+            nextState = State.Title;
+        }
+
     }
 }
