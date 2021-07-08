@@ -48,7 +48,7 @@ namespace YoketoruVS21
         State currentState = State.None;
         State nextState = State.Title;
 
-        int itemCoUnt;
+        
 
         [DllImport("user32.dll")]
         public static extern short GetAsyncKeyState(int vKey);
@@ -95,7 +95,8 @@ namespace YoketoruVS21
                {
                 initProc();
                }
-                if (currentState == State.Game)
+            
+            if (currentState == State.Game)
                 {
                     UpdateGame();
                 }

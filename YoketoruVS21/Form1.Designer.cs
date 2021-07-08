@@ -48,7 +48,7 @@ namespace YoketoruVS21
             this.titleLabel.AutoSize = true;
             this.titleLabel.Font = new System.Drawing.Font("游ゴシック", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.titleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.titleLabel.Location = new System.Drawing.Point(177, 70);
+            this.titleLabel.Location = new System.Drawing.Point(179, 70);
             this.titleLabel.Name = "titleLabel";
             this.titleLabel.Size = new System.Drawing.Size(435, 82);
             this.titleLabel.TabIndex = 0;
@@ -145,7 +145,7 @@ namespace YoketoruVS21
             // 
             this.titleButton.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.titleButton.Font = new System.Drawing.Font("MS UI Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.titleButton.Location = new System.Drawing.Point(274, 279);
+            this.titleButton.Location = new System.Drawing.Point(276, 279);
             this.titleButton.Name = "titleButton";
             this.titleButton.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.titleButton.Size = new System.Drawing.Size(236, 96);
@@ -171,7 +171,6 @@ namespace YoketoruVS21
             this.Controls.Add(this.titleLabel);
             this.Name = "Form1";
             this.Text = "Form1";
-
             this.ResumeLayout(false);
             this.PerformLayout();
 
